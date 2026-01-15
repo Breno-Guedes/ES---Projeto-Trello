@@ -13,7 +13,7 @@ Este repositório contém o projeto desenvolvido para o trabalho de ES do IFPI-C
 - Software de acompanhamento,gerenciamento e entrega de projetos 
 - Dois tipos de usuário: Aluno e Professor
 
-##Funcionalidades
+## Funcionalidades
 - Cadastrar e gerenciar projetos, e cada projeto possui tarefas
 - Cada projeto possui 3 colunas para representar o estado das tarefas: A fazer - Fazendo - Pronto
 - Cada tarefa pode ter comentários e prazos
