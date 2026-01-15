@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>Kanban - Gerenciamento</title>
+</head>
+<body>
+    <main class="kanban">
+        <!-- COLUMN 1: Backlog -->
+        <div class="kanban-column" data-id="1">
+            <div class="kanban-title">
+                <h2>Backlog</h2>
+                <button class="add-card"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="kanban-cards">
+                <!-- Card 1 -->
+                <div class="kanban-card" draggable="true" id="card-1">
+                    <div class="card-header">
+                        <div class="badge low"><span>Baixa prioridade</span></div>
+                        <button class="btn-delete" title="Excluir card"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <p class="card-title">Levantamento de requisitos</p>
+                    <div class="card-infos">
+                        <div class="card-icons">
+                            <p class="icon-comment"><i class="fa-regular fa-comment"></i> <span class="count-comments">2</span></p>
+                            <p class="icon-attach"><i class="fa-solid fa-paperclip"></i> <span class="count-attachments">1</span></p>
+                        </div>
+                        <div class="user"><img src="src/imagens/avatar2.png" alt="Avatar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: A Fazer -->
+        <div class="kanban-column" data-id="2">
+            <div class="kanban-title">
+                <h2>A Fazer</h2>
+                <button class="add-card"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="kanban-cards">
+                <!-- Card 2 -->
+                <div class="kanban-card" draggable="true" id="card-2">
+                    <div class="card-header">
+                        <div class="badge high"><span>Alta prioridade</span></div>
+                        <button class="btn-delete" title="Excluir card"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <p class="card-title">Criar estrutura do Banco de Dados</p>
+                    <div class="card-infos">
+                        <div class="card-icons">
+                            <p class="icon-comment"><i class="fa-regular fa-comment"></i> <span class="count-comments">0</span></p>
+                            <p class="icon-attach"><i class="fa-solid fa-paperclip"></i> <span class="count-attachments">0</span></p>
+                        </div>
+                        <div class="user"><img src="src/imagens/avatar3.png" alt="Avatar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMN 3: Fazendo -->
+        <div class="kanban-column" data-id="3">
+            <div class="kanban-title">
+                <h2>Fazendo</h2>
+                <button class="add-card"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="kanban-cards">
+                <!-- Card 3 -->
+                <div class="kanban-card" draggable="true" id="card-3">
+                    <div class="card-header">
+                        <div class="badge medium"><span>Média prioridade</span></div>
+                        <button class="btn-delete" title="Excluir card"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <p class="card-title">Desenvolver API de Login</p>
+                    <div class="card-infos">
+                        <div class="card-icons">
+                            <p class="icon-comment"><i class="fa-regular fa-comment"></i> <span class="count-comments">5</span></p>
+                            <p class="icon-attach"><i class="fa-solid fa-paperclip"></i> <span class="count-attachments">2</span></p>
+                        </div>
+                        <div class="user"><img src="src/imagens/avatar2.png" alt="Avatar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMN 4: Concluído -->
+        <div class="kanban-column" data-id="4">
+            <div class="kanban-title">
+                <h2>Concluído</h2>
+                <button class="add-card"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="kanban-cards">
+                 <!-- Card 4 -->
+                 <div class="kanban-card" draggable="true" id="card-4">
+                    <div class="card-header">
+                        <div class="badge low"><span>Baixa prioridade</span></div>
+                        <button class="btn-delete" title="Excluir card"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <p class="card-title">Configurar ambiente de desenvolvimento</p>
+                    <div class="card-infos">
+                        <div class="card-icons">
+                            <p class="icon-comment"><i class="fa-regular fa-comment"></i> <span class="count-comments">1</span></p>
+                            <p class="icon-attach"><i class="fa-solid fa-paperclip"></i> <span class="count-attachments">0</span></p>
+                        </div>
+                        <div class="user"><img src="src/imagens/avatar3.png" alt="Avatar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Confirmação de Exclusão (Novo) -->
+    <div id="delete-modal" class="modal-overlay hidden">
+        <div class="modal-content delete-content">
+            <div class="delete-icon-area">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3>Excluir Tarefa?</h3>
+            <p>Você tem certeza que deseja excluir esta tarefa? Essa ação não pode ser desfeita.</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="btn-cancel-delete">Cancelar</button>
+                <button class="btn-danger" id="btn-confirm-delete">Sim, excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes (Anexos e Comentários) -->
+    <div id="card-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-card-title">Título do Card</h3>
+                <button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Seção de Anexos -->
+                <div class="modal-section attachments-section">
+                    <h4><i class="fa-solid fa-paperclip"></i> Anexos</h4>
+                    <p class="section-desc">Adicione arquivos relevantes para esta tarefa.</p>
+                    
+                    <ul id="attachment-list">
+                        <!-- Lista de anexos -->
+                    </ul>
+                    
+                    <input type="file" id="file-input" hidden>
+                    <button class="btn-secondary full-width" id="btn-add-attachment">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Carregar anexo
+                    </button>
+                </div>
+
+                <!-- Linha divisória visual -->
+                <hr class="modal-divider">
+
+                <!-- Seção de Comentários -->
+                <div class="modal-section comments-section">
+                    <h4><i class="fa-regular fa-comment"></i> Comentários</h4>
+                    <p class="section-desc">Discuta detalhes desta tarefa.</p>
+                    
+                    <div id="comments-list">
+                        <!-- Lista de comentários -->
+                    </div>
+                    
+                    <div class="comment-input-area">
+                        <textarea id="new-comment-text" placeholder="Escreva um comentário..."></textarea>
+                        <button class="btn-primary" id="btn-save-comment">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/script/script.js"></script>
+</body>
+</html>
